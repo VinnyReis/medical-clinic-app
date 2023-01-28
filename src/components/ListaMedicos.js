@@ -1,5 +1,5 @@
 import { useState, useEffect} from 'react';
-import Avatar from './Avatar';
+import PerfilUsuario from './PerfilUsuario';
 
 function ListaMedicos({medicos, onChange}){
 
@@ -7,7 +7,7 @@ function ListaMedicos({medicos, onChange}){
 
   useEffect(() => {
     onChange(selectedMedic);
-  },[selectedMedic]);
+  },[selectedMedic, onChange]);
 
   return(
     <div className='list-group w-auto' style={{height: '40vh', overflowY: 'scroll'}}>
@@ -24,17 +24,11 @@ function ListaMedicos({medicos, onChange}){
 } export default ListaMedicos;
 
 const CardMedico = ({medico, selectedMedic, selectMedic}) => {
-  let classList = `${medico.id === selectedMedic && 'active'} list-group-item list-group-item-action d-flex gap-3 py-2 align-items-center`
+  let classList = `${medico.id === selectedMedic?.id && 'active'} list-group-item list-group-item-action d-flex gap-3 py-2 align-items-center`
   
   return(
-    <div onClick={() => selectMedic(medico.id)} className={classList} aria-current='true'>
-      <Avatar/>
-      <div className='pe-cursor d-flex gap-2 w-100 justify-content-between'>
-        <div>
-          <h6 className='mb-0'>{medico.nome}</h6>
-          <p className='mb-0 opacity-75'>{medico.especialidade}</p>
-        </div>
-      </div>
+    <div onClick={() => selectMedic(medico)} className={classList} aria-current='true'>
+      <PerfilUsuario nome={medico.nome} descricao={medico.especialidade}/>
     </div>
   )
 }
