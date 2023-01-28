@@ -1,33 +1,30 @@
-function Table(){
+function Table({ columns, data }){
+
   return(
-    <table class="table">
+    <table className='table'>
       <thead>
         <tr>
-          <th scope="col">#</th>
-          <th scope="col">First</th>
-          <th scope="col">Last</th>
-          <th scope="col">Handle</th>
+          {columns.map((column, i)=> <TableHeadItem title={column.title} key={i}/>)}
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td colspan="2">Larry the Bird</td>
-          <td>@twitter</td>
-        </tr>
+        {data.map((row, i) => <TableRow rowData={row} columns={columns} key={i}/>)}
       </tbody>
     </table>
   )
 } export default Table;
+
+const TableHeadItem = ({title}) => <th scope='col'>{title}</th>
+
+const TableRow = ({rowData, columns}) => {
+  return(
+    <tr>
+      {columns.map((column, i) => {
+        let cellData = rowData[`${column.dataIndex}`];
+        cellData = column.render ? column.render(column.dataIndex ? cellData: rowData) : cellData;
+
+        return <td key={i}>{cellData}</td>
+      })}
+    </tr>
+  )
+}
