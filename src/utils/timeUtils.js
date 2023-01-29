@@ -27,3 +27,16 @@ export function convertDate(date,format){
     return date[2] + "/" + date[1] + "/" + date[0];
   }
 }
+
+export function dateObjectToString(date){
+  let day = date.getDate();
+  day = day < 10 ? '0' + day : day;
+
+  let month = date.getMonth() + 1;
+  month = month < 10 ? '0' + month : month;
+
+  let year = date.getFullYear();
+  year = year < 10 ? '0' + year : year;
+
+  return `${day}/${month}/${year}`;
+}

@@ -6,6 +6,7 @@ import ModalAgendamento from '../components/ModalAgendamento';
 import medicos from '../mock/medicos.json';
 import agendamentosMock from '../mock/agendamentos.json';
 import { Calendar } from 'react-calendar';
+import { dateObjectToString } from '../utils/timeUtils';
 
 export const AgendamentoContext = createContext(null);
 
@@ -13,7 +14,7 @@ function NovoAgendamento(){
 
   const [agendamentos, dispatchAgendamentos] = useReducer(reducer, agendamentosMock);
   const [selectedMedic, setSelectedMedic] = useState(null);
-  const [selectedDate] = useState('28/01/2023');
+  const [selectedDate, setSelectedDate] = useState(dateObjectToString(new Date));
   const [selectedTime, setSelectedTime] = useState(null);
   const [modalAgendamento, abrirModal] = useState(false);
 
@@ -38,7 +39,10 @@ function NovoAgendamento(){
               medicos={medicos}
               onChange={(value) => setSelectedMedic(value)}
             />
-            <Calendar onChange={(values) => console.log(values)} defaultValue={new Date}/>
+            <Calendar
+              onChange={(values) => setSelectedDate(dateObjectToString(values))}
+              defaultValue={new Date}
+            />
           </div>
           <div className='col-8'>
             <h5>{selectedDate}</h5>
