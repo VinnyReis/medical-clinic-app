@@ -21,7 +21,7 @@ function ListaHorarios(props){
   fimExpediente = twentyFourHourToMinutes(fimExpediente);
 
   return(
-    <Lista style={{height: '80vh', overflowY: 'scroll'}}>
+    <Lista style={{height: '80vh', overflowY: 'scroll', overflowY: 'overlay'}}>
       {[...Array(1440 / duracaoConsulta)].map((_,i) => {
         const horario = i * duracaoConsulta;
         const disponivel = val => isDateAvailable(horario, val.horario.inicio, val.horario.fim);
