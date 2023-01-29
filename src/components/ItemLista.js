@@ -4,6 +4,7 @@ function ItemLista(props){
   return(
     <div aria-current='true'className={classList} {...props}>
       {props.children}
+      {props.extra}
     </div>
   )
 } export default ItemLista;

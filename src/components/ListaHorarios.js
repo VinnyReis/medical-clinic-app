@@ -2,6 +2,7 @@ import { minutesToTime, twentyFourHourToMinutes, isDateAvailable } from '../util
 import PerfilUsuario from './PerfilUsuario';
 import pacientes from '../mock/pacientes.json'
 import Lista from './Lista';
+import ItemLista from './ItemLista';
 
 function ListaHorarios(props){
 
@@ -40,18 +41,22 @@ const CardHorario = ({horario, agendamento, blocked}) => {
   const contato = `Telefone: ${paciente?.telefone}`;
 
   return(
-    <div className='list-group-item list-group-item-action d-flex gap-3 py-3 align-items-center' aria-current='true'>
+    <ItemLista extra={!blocked && <ActionButtons/>}>
       <h5 style={{width: '10%'}}>{horario}</h5>
       {!blocked ?
         <>
           {agendamento ?
-            <PerfilUsuario nome={paciente.nome} descricao={contato}/> :
-            <div className='w-100'/>
+            <PerfilUsuario nome={paciente.nome} descricao={contato}/> : <div className='w-100'/>
           }
-          <small className='opacity-50 text-nowrap'>Now</small>
         </>
-        : <h6>Horário Indisponível</h6>
+        : <h6 className='w-100'>Horário Indisponível</h6>
       }
-    </div>
+    </ItemLista>
   );
 };
+
+const ActionButtons = () => {
+  return(
+    <button className='btn btn-light'>Novo</button>
+  );
+}
