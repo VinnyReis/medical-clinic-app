@@ -5,6 +5,7 @@ import ListaHorarios from '../components/ListaHorarios';
 import ModalAgendamento from '../components/ModalAgendamento';
 import medicos from '../mock/medicos.json';
 import agendamentosMock from '../mock/agendamentos.json';
+import { Calendar } from 'react-calendar';
 
 export const AgendamentoContext = createContext(null);
 
@@ -31,12 +32,13 @@ function NovoAgendamento(){
     <AgendamentoContext.Provider value={{ dispatchAgendamentos }}>
       <div className='container'>
         <div className='row'>
-          <div className='col-4'>
+          <div className='col-4 gap-4'>
             <h5>Médicos</h5>
             <ListaMedicos
               medicos={medicos}
               onChange={(value) => setSelectedMedic(value)}
             />
+            <Calendar onChange={(values) => console.log(values)} defaultValue={new Date}/>
           </div>
           <div className='col-8'>
             <h5>{selectedDate}</h5>

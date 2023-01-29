@@ -12,7 +12,7 @@ function ListaMedicos({medicos, onChange}){
   },[selectedMedic, onChange]);
 
   return(
-    <Lista style={{height: '40vh', overflowY: 'scroll', overflowY: 'overlay'}}>
+    <Lista style={{maxHeight: '40vh', overflowY: 'scroll', overflowY: 'overlay'}}>
       {medicos.map((medico, i) =>
         <ItemLista onClick={() => selectMedic(medico)} selected={medico.id === selectedMedic?.id} key={i}>
           <PerfilUsuario nome={medico.nome} descricao={medico.especialidade}/>
