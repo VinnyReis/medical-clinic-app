@@ -1,0 +1,51 @@
+[
+  {
+    "nome": "João de Deus",
+    "especialidade": "Obstetra",
+    "inicioExpediente": "08:00",
+    "fimExpediente": "18:00",
+    "duracaoConsulta": 30,
+    "indisponibilidades": [
+      {
+        "data": "28/01/2023",
+        "horario": {
+          "inicio": "12:00",
+          "fim": "14:00"
+        }
+      }
+    ],
+    "id": 1
+  },
+  {
+    "nome": "Jucelino Pagavista",
+    "especialidade": "Pediatra",
+    "inicioExpediente": "14:00",
+    "fimExpediente": "18:00",
+    "duracaoConsulta": 30,
+    "id": 2
+  },
+  {
+    "nome": "Maria Dolores",
+    "especialidade": "Otorrino",
+    "inicioExpediente": "08:00",
+    "fimExpediente": "12:00",
+    "duracaoConsulta": 30,
+    "id": 3
+  },
+  {
+    "nome": "Felipe Marconi",
+    "especialidade": "Ortopedista",
+    "inicioExpediente": "08:00",
+    "fimExpediente": "18:00",
+    "duracaoConsulta": 30,
+    "id": 4
+  },
+  {
+    "nome": "João Bulevard",
+    "especialidade": "Pediatra",
+    "inicioExpediente": "08:00",
+    "fimExpediente": "18:00",
+    "duracaoConsulta": 30,
+    "id": 5
+  }
+]
