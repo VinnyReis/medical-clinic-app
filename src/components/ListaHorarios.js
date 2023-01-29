@@ -3,6 +3,7 @@ import PerfilUsuario from './PerfilUsuario';
 import pacientes from '../mock/pacientes.json'
 import Lista from './Lista';
 import ItemLista from './ItemLista';
+import Button from './Button';
 
 function ListaHorarios(props){
 
@@ -57,6 +58,6 @@ const CardHorario = ({horario, agendamento, blocked}) => {
 
 const ActionButtons = () => {
   return(
-    <button className='btn btn-light'>Novo</button>
+    <Button type='light' className='btn btn-light'>Novo</Button>
   );
 }
