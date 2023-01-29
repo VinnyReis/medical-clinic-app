@@ -1,3 +1,4 @@
+import React from 'react';
 import { minutesToTime, twentyFourHourToMinutes, isDateAvailable } from '../utils/timeUtils';
 import PerfilUsuario from './PerfilUsuario';
 import pacientes from '../mock/pacientes.json'
@@ -12,7 +13,8 @@ function ListaHorarios(props){
     inicioExpediente,
     fimExpediente,
     indisponibilidades,
-    agendamentos
+    agendamentos,
+    onSelect
   } = props;
 
   inicioExpediente = twentyFourHourToMinutes(inicioExpediente);
@@ -30,19 +32,22 @@ function ListaHorarios(props){
             horario={minutesToTime(i * duracaoConsulta)}
             agendamento={agendamento}
             blocked={indisponibilidades?.every(disponivel) ?? false}
+            onSelect={onSelect}
             key={i}
           />
       })}
     </Lista>
   )
-} export default ListaHorarios;
+} export default React.memo(ListaHorarios, (prevProps, nextProps) => 
+    JSON.stringify(prevProps) === JSON.stringify(nextProps)
+);
 
-const CardHorario = ({horario, agendamento, blocked}) => {
+const CardHorario = ({horario, agendamento, onSelect, blocked}) => {
   const paciente = pacientes.find(el => el.id = agendamento?.paciente);
   const contato = `Telefone: ${paciente?.telefone}`;
 
   return(
-    <ItemLista extra={!blocked && <ActionButtons/>}>
+    <ItemLista extra={!blocked ? <ActionButtons onSelect={onSelect} horario={horario}/> : ''}>
       <h5 style={{width: '10%'}}>{horario}</h5>
       {!blocked ?
         <>
@@ -56,8 +61,13 @@ const CardHorario = ({horario, agendamento, blocked}) => {
   );
 };
 
-const ActionButtons = () => {
+const ActionButtons = ({onSelect, horario}) => {
   return(
-    <Button type='light' className='btn btn-light'>Novo</Button>
+    <Button
+      onClick={() => onSelect(horario)}
+      type='light'
+      className='btn btn-light'
+      children='Novo'
+    />
   );
 }
