@@ -1,22 +1,39 @@
-import { useRef } from 'react';
+import { useRef, useContext } from 'react';
+import { AgendamentoContext } from '../pages/NovoAgendamento';
+import { convertDate } from '../utils/timeUtils';
 import Modal from './Modal';
 import Input from './Input';
 
-function ModalAgendamento({ isOpen, show, selectedMedic, selectedDate, selectedTime }){
+function ModalAgendamento({ isOpen, showModal, selectedMedic, selectedDate, selectedTime }){
 
   const form = useRef(null);
-  selectedDate = selectedDate.split('/');
-  selectedDate = selectedDate[2] + "-" + selectedDate[1] + "-" + selectedDate[0];
+  const {dispatchAgendamentos} = useContext(AgendamentoContext);
+  selectedDate = convertDate(selectedDate, 'aa-mm-dd');
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    var formData = new FormData(event.target);
+    let values = Object.fromEntries(formData);
+
+    values = {
+      ...values,
+      medico: selectedMedic.id,
+      paciente: 1,
+      data: convertDate(selectedDate, 'dd/mm/aa'),
+      horario: selectedTime
+    }
+
+    dispatchAgendamentos({type: 'ADD_ITEM', item: values });
+    form.current.reset();
+    showModal(false);
   }
 
   return(
     <Modal
       title='Novo Agendamento'
       isOpen={isOpen}
-      show={show}
+      show={showModal}
       onSave={() => form.current.requestSubmit()}
     >
       <form onSubmit={handleSubmit} ref={form}>

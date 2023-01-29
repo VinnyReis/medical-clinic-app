@@ -12,7 +12,9 @@ function Modal(props){
     const modal = new BootstrapModal(modalRef.current, {keyboard: false})
     setModal(modal);
 
-    window.addEventListener('hide.bs.modal', () => show(false));
+    window.addEventListener('hide.bs.modal', () => {
+      show(false);
+    });
     return () => {
       window.removeEventListener('hide.bs.modal', () => show(false));
     };
@@ -20,6 +22,7 @@ function Modal(props){
 
   useEffect(() => {
     if(modal && isOpen) modal.show();
+    else if(modal) modal.hide();
   },[props, modal])
 
   return(
