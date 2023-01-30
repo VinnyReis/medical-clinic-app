@@ -4,6 +4,7 @@ import medicos from '../mock/medicos.json';
 import Input from '../components/Input';
 import Button from '../components/Button';
 import GraficoConsultas from '../components/GraficoConsultas';
+import GraficoStatus from '../components/GraficoStatus';
 import { Search } from 'react-feather';
 
 function Home(){
@@ -18,11 +19,18 @@ function Home(){
             grouped
             extra={<Button type='primary' children={<Search size={22}/>}/>}
           />
-          <div className='col-6 bg-light border rounded py-2'>
-            <div className='row'>
-              <GraficoConsultas/>
+            <div className='row gx-3'>
+              <div className='col-12 col-md-6'>
+                <div className='bg-light border rounded p-2 mb-3'>
+                  <GraficoConsultas/>
+                </div>
+              </div>
+              <div className='col-12 col-md-6'>
+                <div className='bg-light border rounded p-2 mb-3'>
+                  <GraficoStatus/>
+                </div>
+              </div>
             </div>
-          </div>
         </div>
         <div className='col-12 col-lg-4 gap-4'>
           <Calendar
