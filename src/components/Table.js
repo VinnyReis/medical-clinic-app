@@ -1,7 +1,7 @@
 function Table({ columns, data }){
 
   return(
-    <table className='table'>
+    <table className='table table-bordered rounded overflow-hidden align-middle'>
       <thead>
         <tr>
           {columns.map((column, i)=> <TableHeadItem title={column.title} key={i}/>)}
@@ -14,11 +14,11 @@ function Table({ columns, data }){
   )
 } export default Table;
 
-const TableHeadItem = ({title}) => <th scope='col'>{title}</th>
+const TableHeadItem = ({title}) => <th className='table-light' scope='col'>{title}</th>
 
 const TableRow = ({rowData, columns}) => {
   return(
-    <tr>
+    <tr className='text-align-center'>
       {columns.map((column, i) => {
         let cellData = rowData[`${column.dataIndex}`];
         cellData = column.render ? column.render(column.dataIndex ? cellData: rowData) : cellData;

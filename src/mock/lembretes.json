@@ -1,0 +1,22 @@
+[
+  {
+    "titulo": "Por favor abrir esse lembrete, texto no corpo da mensagem",
+    "conteudo": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque interdum turpis et quam sagittis scelerisque id eget urna.",
+    "importancia" : "Muito Alta"
+  },
+  {
+    "titulo": "Ligar para doutora Márcia para confirmar férias.",
+    "conteudo": "Vestibulum fermentum lectus nisl, vitae finibus ipsum sollicitudin non. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam eget massa id lorem dignissim venenatis. Aliquam dignissim elit ac orci dictum maximus vitae sed mauris. Etiam congue tellus eget dolor iaculis tempor. Nam in elit a lectus efficitur ultricies. Nam erat magna, malesuada a malesuada eu, blandit id tortor. Ut sit amet nulla posuere, cursus ex eu, laoreet metus. Praesent dignissim tristique interdum. In sed quam consequat, viverra mauris et, condimentum libero. Vestibulum sed cursus tellus, vel dictum erat. Etiam lacinia lorem ante, sit amet iaculis dui accumsan sollicitudin. Sed a condimentum lectus. Aliquam est nisi, bibendum in consectetur sed, dapibus eget turpis. Aliquam suscipit quam at massa ultricies fermentum.",
+    "importancia" : "Alta"
+  },
+  {
+    "titulo": "Confirmar agendameneto Maria José Fernandes.",
+    "conteudo": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed viverra, sem id egestas finibus, sem erat molestie massa, a cursus dolor diam nec augue. Fusce efficitur, urna varius feugiat venenatis, odio ex gravida est, at lobortis diam elit ut velit. Proin mattis eget leo vitae dapibus. Maecenas id enim quis felis pellentesque sagittis. Integer ultricies posuere velit eu efficitur. Donec tincidunt id enim vel consectetur. Mauris vel ipsum sit amet mi lacinia luctus. Morbi ac lacus fringilla, bibendum elit et, semper metus.",
+    "importancia" : "Alta"
+  },
+  {
+    "titulo": "Fazer orçamentos das luvas cirurgicas.",
+    "conteudo": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec cursus justo et elit cursus, eget varius ante tristique. Nam mattis risus id ante feugiat vehicula.",
+    "importancia" : "Média"
+  }
+]

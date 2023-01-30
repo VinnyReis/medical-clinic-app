@@ -3,7 +3,7 @@ import { Modal as BootstrapModal } from 'bootstrap';
 
 function Modal(props){
 
-  const { isOpen, show, title, children, onSave } = props;
+  const { isOpen, show, title, children, onSave, hideSave } = props;
 
   const [modal, setModal] = useState(false);
   const modalRef = useRef(null);
@@ -38,7 +38,9 @@ function Modal(props){
           </div>
           <div className="modal-footer">
             <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-            <button onClick={onSave} type="button" className="btn btn-primary">Salvar</button>
+            {!hideSave &&
+              <button onClick={onSave} type="button" className="btn btn-primary">Salvar</button>
+            }
           </div>
         </div>
       </div>
