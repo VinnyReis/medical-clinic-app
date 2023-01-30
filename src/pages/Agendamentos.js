@@ -4,7 +4,7 @@ import Button from '../components/Button';
 import { Search } from 'react-feather';
 import agendamentos from '../mock/agendamentos.json';
 import medicos from '../mock/medicos.json';
-import pacientes from '../mock/pacientes_agenda.json';
+import pacientes from '../mock/pacientes.json';
 
 function Agendamentos(){
 

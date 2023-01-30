@@ -4,6 +4,8 @@ import { convertDate } from '../utils/timeUtils';
 import Toast, { showToast } from './Toast';
 import Modal from './Modal';
 import Input from './Input';
+import Select from './Select';
+import pacientes from '../mock/pacientes.json';
 
 function ModalAgendamento({ isOpen, showModal, selectedMedic, selectedDate, selectedTime }){
 
@@ -20,8 +22,8 @@ function ModalAgendamento({ isOpen, showModal, selectedMedic, selectedDate, sele
 
     values = {
       ...values,
+      paciente: parseInt(values.paciente),
       medico: selectedMedic.id,
-      paciente: 1,
       data: convertDate(selectedDate, 'dd/mm/aa'),
       horario: selectedTime
     }
@@ -50,10 +52,13 @@ function ModalAgendamento({ isOpen, showModal, selectedMedic, selectedDate, sele
               <Input label='Horário' name='horario' type='time' defaultValue={selectedTime ?? ''} required disabled/>
             </div>
             <div className='col-12'>
-              <Input label='Nome Paciente' name='paciente' type='text' required/>
-            </div>
-            <div className='col-12'>
-              <Input label='Telefone Paciente' name='telefone' type='phone' required/>
+              <Select
+                options={pacientes.map((el) => {return {value: el.id, label: el.nome}})}
+                label='Paciente'
+                placeholder={'Selecione um paciente'}
+                name='paciente'
+                required
+              />
             </div>
           </div>
         </form>

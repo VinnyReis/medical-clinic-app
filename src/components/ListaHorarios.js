@@ -46,11 +46,11 @@ function ListaHorarios(props){
 );
 
 const CardHorario = ({horario, agendamento, onSelect, onDelete, blocked}) => {
-  const paciente = pacientes.find(el => el.id = agendamento?.paciente);
+  const paciente = pacientes.find(el => el.id === agendamento?.paciente);
   const contato = `Telefone: ${paciente?.telefone}`;
 
   return(
-    <div className={`mb-2 rounded ${!agendamento ? 'cursor-pointer' : ''}`} onClick={!agendamento ? () => onSelect(horario) : null}>
+    <div className={`mb-2 rounded ${!agendamento && !blocked ? 'cursor-pointer' : ''}`} onClick={!agendamento && !blocked ? () => onSelect(horario) : null}>
       <ItemLista
         extra={!blocked ?
           <ActionButtons
@@ -76,7 +76,7 @@ const CardHorario = ({horario, agendamento, onSelect, onDelete, blocked}) => {
 };
 
 const ActionButtons = ({onSelect, onDelete, horario, agendamento}) => {
-  
+
   return(
     <>
       {agendamento ?
