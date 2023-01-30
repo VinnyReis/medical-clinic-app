@@ -49,7 +49,7 @@ const CardHorario = ({horario, agendamento, onSelect, blocked}) => {
 
   return(
     <ItemLista extra={!blocked ? <ActionButtons onSelect={onSelect} horario={horario}/> : ''}>
-      <h5 style={{width: '10%'}}>{horario}</h5>
+      <h5 className='me-2 mb-0'>{horario}</h5>
       {!blocked ?
         <>
           {agendamento ?

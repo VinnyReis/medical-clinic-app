@@ -1,5 +1,42 @@
+import ListaMedicos from '../components/ListaMedicos';
+import Calendar from 'react-calendar';
+import medicos from '../mock/medicos.json';
+import Input from '../components/Input';
+import Button from '../components/Button';
+import GraficoConsultas from '../components/GraficoConsultas';
+import { Search } from 'react-feather';
+
 function Home(){
+
   return(
-    <>Home</>
+    <div className='container'>
+      <div className='row'>
+        <div className='col-12 col-lg-8'>
+          <Input
+            type='text'
+            placeholder='Busca rápida por nome do paciente'
+            grouped
+            extra={<Button type='primary' children={<Search size={22}/>}/>}
+          />
+          <div className='col-6 bg-light border rounded py-2'>
+            <div className='row'>
+              <GraficoConsultas/>
+            </div>
+          </div>
+        </div>
+        <div className='col-12 col-lg-4 gap-4'>
+          <Calendar
+            // onChange={(values) => setSelectedDate(dateObjectToString(values))}
+            defaultValue={new Date()}
+          />
+          <div className='py-4'>
+            <ListaMedicos
+              medicos={medicos}
+              onChange={(value) => {}}
+            />
+          </div>
+        </div>
+      </div>
+    </div>
   )
 } export default Home;

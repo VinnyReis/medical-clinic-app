@@ -39,10 +39,12 @@ function NovoAgendamento(){
               medicos={medicos}
               onChange={(value) => setSelectedMedic(value)}
             />
-            <Calendar
-              onChange={(values) => setSelectedDate(dateObjectToString(values))}
-              defaultValue={new Date()}
-            />
+            <div className='py-4'>
+              <Calendar
+                onChange={(values) => setSelectedDate(dateObjectToString(values))}
+                defaultValue={new Date()}
+              />
+            </div>
           </div>
           <div className='col-12 col-lg-8'>
             <h5>{selectedDate}</h5>
