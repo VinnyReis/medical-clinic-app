@@ -26,10 +26,10 @@ function Confirmacao(props){
   },[props, modal, isOpen])
 
   return(
-    <div ref={modalRef} className='modal modal-alert fade py-5' tabindex='-1' role='dialog' id='modalChoice'>
+    <div ref={modalRef} className='modal modal-alert fade py-5' tabIndex='-1' role='dialog' id='modalChoice'>
       <div className='modal-dialog' role='document'>
         <div className='modal-content rounded-3 shadow'>
-          <div className='modal-body p-4 text-center'>''
+          <div className='modal-body p-4 text-center'>
             <h5 className='mb-0'>{titulo}</h5>
             <p className='mb-0'>{descricao}</p>
           </div>

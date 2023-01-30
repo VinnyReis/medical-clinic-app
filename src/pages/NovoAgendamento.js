@@ -1,8 +1,10 @@
-import { useState, useReducer, createContext } from 'react';
+import { useState, useReducer, createContext, useRef } from 'react';
 import reducer from '../reducers';
 import ListaMedicos from '../components/ListaMedicos';
 import ListaHorarios from '../components/ListaHorarios';
 import ModalAgendamento from '../components/ModalAgendamento';
+import Confirmacao from '../components/Confirmacao';
+import Toast, { showToast } from '../components/Toast';
 import medicos from '../mock/medicos.json';
 import agendamentosMock from '../mock/agendamentos.json';
 import { Calendar } from 'react-calendar';
@@ -17,6 +19,9 @@ function NovoAgendamento(){
   const [selectedDate, setSelectedDate] = useState(dateObjectToString(new Date()));
   const [selectedTime, setSelectedTime] = useState(null);
   const [modalAgendamento, abrirModal] = useState(false);
+  const [modalConfirmacao, abrirConfirmacao] = useState(false);
+  const idAgendamento = useRef(null);
+  const toastRef = useRef(null);
 
   const filtrarAgendamentos = () => {
     return agendamentos.filter(el => 
@@ -27,6 +32,17 @@ function NovoAgendamento(){
   const iniciarAgendamento = (horario) => {
     setSelectedTime(horario);
     abrirModal(true);
+  }
+
+  const confirmarExclusao = (id) => {
+    idAgendamento.current = id;
+    abrirConfirmacao(true);
+  }
+
+  const excluir = (id) => {
+    abrirConfirmacao(false);
+    dispatchAgendamentos({ type: 'DELETE_ITEM', id});
+    showToast(toastRef);
   }
 
   return(
@@ -54,6 +70,7 @@ function NovoAgendamento(){
                 {...selectedMedic}
                 agendamentos={filtrarAgendamentos()}
                 onSelect={(horario) => iniciarAgendamento(horario)}
+                onDelete={(id) => confirmarExclusao(id)}
               /> 
               : <h5>Por favor selecione um médico para ver seus horários disponíveis.</h5>
             }
@@ -66,6 +83,16 @@ function NovoAgendamento(){
           isOpen={modalAgendamento}
           showModal={abrirModal}
         />
+        <Confirmacao
+          titulo={'Deletar agendamento?'}
+          descricao={'Tem certeza disso? essa ação não pode ser desfeita!'}
+          textoConfirmar={'Sim, deletar!'}
+          textoCancelar={'Não, obrigado'}
+          isOpen={modalConfirmacao}
+          show={abrirConfirmacao}
+          onConfirm={() => excluir(idAgendamento.current)}
+        />
+        <Toast toastRef={toastRef} message='Agendamento deletado com sucesso!'/>
       </div>
     </AgendamentoContext.Provider>
   )

@@ -15,7 +15,8 @@ function ListaHorarios(props){
     fimExpediente,
     indisponibilidades,
     agendamentos,
-    onSelect
+    onSelect,
+    onDelete
   } = props;
 
   inicioExpediente = twentyFourHourToMinutes(inicioExpediente);
@@ -34,6 +35,7 @@ function ListaHorarios(props){
             agendamento={agendamento}
             blocked={indisponibilidades?.every(disponivel) ?? false}
             onSelect={onSelect}
+            onDelete={onDelete}
             key={i}
           />
       })}
@@ -43,7 +45,7 @@ function ListaHorarios(props){
     JSON.stringify(prevProps) === JSON.stringify(nextProps)
 );
 
-const CardHorario = ({horario, agendamento, onSelect, blocked}) => {
+const CardHorario = ({horario, agendamento, onSelect, onDelete, blocked}) => {
   const paciente = pacientes.find(el => el.id = agendamento?.paciente);
   const contato = `Telefone: ${paciente?.telefone}`;
 
@@ -53,6 +55,7 @@ const CardHorario = ({horario, agendamento, onSelect, blocked}) => {
         extra={!blocked ?
           <ActionButtons
             onSelect={onSelect}
+            onDelete={onDelete}
             horario={horario}
             agendamento={agendamento}
           /> : ''
@@ -72,12 +75,13 @@ const CardHorario = ({horario, agendamento, onSelect, blocked}) => {
   );
 };
 
-const ActionButtons = ({onSelect, horario, agendamento}) => {
+const ActionButtons = ({onSelect, onDelete, horario, agendamento}) => {
+  
   return(
     <>
       {agendamento ?
         <Button
-          onClick={() => alert('Deletar')}
+          onClick={() => onDelete(agendamento.id)}
           type='secondary'
           size='sm'
           children={<Trash size={15}/>}
