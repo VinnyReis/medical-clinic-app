@@ -2,7 +2,10 @@
   {
     "medico": 1,
     "paciente": 1,
-    "data": "28/01/2023",
-    "horario": "08:00"
+    "data": "30/01/2023",
+    "pagamento": "Cartão de crédito",
+    "valor": "5000",
+    "horario": "08:00",
+    "status": "Agurdando"
   }
 ]
