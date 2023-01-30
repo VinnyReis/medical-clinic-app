@@ -14,7 +14,7 @@ function ListaMedicos({medicos, onChange}){
   return(
     <Lista style={{maxHeight: '40vh', overflowY: 'overlay'}}>
       {medicos.map((medico, i) =>
-        <ItemLista onClick={() => selectMedic(medico)} selected={medico.id === selectedMedic?.id} key={i}>
+        <ItemLista className={'cursor-pointer'} onClick={() => selectMedic(medico)} selected={medico.id === selectedMedic?.id} key={i}>
           <PerfilUsuario nome={medico.nome} descricao={medico.especialidade}/>
         </ItemLista>
       )}

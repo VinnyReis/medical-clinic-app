@@ -5,6 +5,7 @@ import pacientes from '../mock/pacientes.json'
 import Lista from './Lista';
 import ItemLista from './ItemLista';
 import Button from './Button';
+import { Plus } from 'react-feather';
 
 function ListaHorarios(props){
 
@@ -66,8 +67,8 @@ const ActionButtons = ({onSelect, horario}) => {
     <Button
       onClick={() => onSelect(horario)}
       type='light'
-      className='btn btn-light'
-      children='Novo'
+      size='sm'
+      children={<Plus size={15} color={'#aaa'}/>}
     />
   );
 }
