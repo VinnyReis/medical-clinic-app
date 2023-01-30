@@ -1,6 +1,7 @@
 @import '../node_modules/react-calendar/dist/Calendar.css';
 
 $primary: #28c2ba;
+$secondary: #dee2e6;
 $min-contrast-ratio: 2;
 
 body {
@@ -208,6 +209,10 @@ abbr[title]{
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.list-group-item{
+  min-height: 58px;
 }
 
 @import '../node_modules/bootstrap/scss/bootstrap';

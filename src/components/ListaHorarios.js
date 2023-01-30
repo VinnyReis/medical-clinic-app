@@ -5,7 +5,7 @@ import pacientes from '../mock/pacientes.json'
 import Lista from './Lista';
 import ItemLista from './ItemLista';
 import Button from './Button';
-import { Plus } from 'react-feather';
+import { Plus, Trash } from 'react-feather';
 
 function ListaHorarios(props){
 
@@ -48,27 +48,48 @@ const CardHorario = ({horario, agendamento, onSelect, blocked}) => {
   const contato = `Telefone: ${paciente?.telefone}`;
 
   return(
-    <ItemLista extra={!blocked ? <ActionButtons onSelect={onSelect} horario={horario}/> : ''}>
-      <h5 className='me-2 mb-0'>{horario}</h5>
-      {!blocked ?
-        <>
-          {agendamento ?
-            <PerfilUsuario nome={paciente.nome} descricao={contato}/> : <div className='w-100'/>
-          }
-        </>
-        : <h6 className='w-100'>Horário Indisponível</h6>
-      }
-    </ItemLista>
+    <div className={`mb-2 rounded ${!agendamento ? 'cursor-pointer' : ''}`} onClick={!agendamento ? () => onSelect(horario) : null}>
+      <ItemLista
+        extra={!blocked ?
+          <ActionButtons
+            onSelect={onSelect}
+            horario={horario}
+            agendamento={agendamento}
+          /> : ''
+        }
+      >
+        <h5 className='me-2 mb-0'>{horario}</h5>
+        {!blocked ?
+          <>
+            {agendamento ?
+              <PerfilUsuario nome={paciente.nome} descricao={contato}/> : <div className='w-100'/>
+            }
+          </>
+          : <h6 className='w-100 m-0'>Horário Indisponível</h6>
+        }
+      </ItemLista>
+    </div>
   );
 };
 
-const ActionButtons = ({onSelect, horario}) => {
+const ActionButtons = ({onSelect, horario, agendamento}) => {
   return(
-    <Button
-      onClick={() => onSelect(horario)}
-      type='light'
-      size='sm'
-      children={<Plus size={15} color={'#aaa'}/>}
-    />
+    <>
+      {agendamento ?
+        <Button
+          onClick={() => alert('Deletar')}
+          type='secondary'
+          size='sm'
+          children={<Trash size={15}/>}
+        />
+        :
+        <Button
+          onClick={() => onSelect(horario)}
+          type='secondary'
+          size='sm'
+          children={<Plus size={15}/>}
+        />
+      }
+    </>
   );
 }
