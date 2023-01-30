@@ -14,7 +14,7 @@ function NovoAgendamento(){
 
   const [agendamentos, dispatchAgendamentos] = useReducer(reducer, agendamentosMock);
   const [selectedMedic, setSelectedMedic] = useState(null);
-  const [selectedDate, setSelectedDate] = useState(dateObjectToString(new Date));
+  const [selectedDate, setSelectedDate] = useState(dateObjectToString(new Date()));
   const [selectedTime, setSelectedTime] = useState(null);
   const [modalAgendamento, abrirModal] = useState(false);
 
@@ -33,7 +33,7 @@ function NovoAgendamento(){
     <AgendamentoContext.Provider value={{ dispatchAgendamentos }}>
       <div className='container'>
         <div className='row'>
-          <div className='col-4 gap-4'>
+          <div className='col-12 col-lg-4 gap-4'>
             <h5>Médicos</h5>
             <ListaMedicos
               medicos={medicos}
@@ -41,10 +41,10 @@ function NovoAgendamento(){
             />
             <Calendar
               onChange={(values) => setSelectedDate(dateObjectToString(values))}
-              defaultValue={new Date}
+              defaultValue={new Date()}
             />
           </div>
-          <div className='col-8'>
+          <div className='col-12 col-lg-8'>
             <h5>{selectedDate}</h5>
             {selectedMedic 
               ?

@@ -19,7 +19,7 @@ export function isDateAvailable(time, start_time, end_time){
 }
 
 export function convertDate(date,format){
-  if(format == 'aa-mm-dd'){
+  if(format === 'aa-mm-dd'){
     date = date.split('/');
     return date[2] + "-" + date[1] + "-" + date[0];
   } else {

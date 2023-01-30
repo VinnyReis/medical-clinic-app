@@ -18,12 +18,12 @@ function Modal(props){
     return () => {
       window.removeEventListener('hide.bs.modal', () => show(false));
     };
-  },[])
+  },[show])
 
   useEffect(() => {
     if(modal && isOpen) modal.show();
     else if(modal) modal.hide();
-  },[props, modal])
+  },[props, modal, isOpen])
 
   return(
     <div className="modal fade" tabIndex="-1" aria-hidden="true" ref={modalRef}>
