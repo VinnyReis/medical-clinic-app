@@ -7,7 +7,7 @@ function Select({name, label, options, placeholder, className, disabled, default
       }
       <select
         name={name}
-        className={`form-control ${className}`}
+        className={`form-select ${className}`}
         placeholder={placeholder ?? ''}
         disabled={disabled}
         required={required}
